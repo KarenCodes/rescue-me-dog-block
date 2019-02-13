@@ -76,15 +76,8 @@ function rescue_me_register_meta() {
     register_meta( 'post', 'rescue_me_meta_good_with_cats', array(
         'show_in_rest' => true,
         'single' => true,
-        'type' => 'string',
+        'type' => 'boolean',
     ) );
-    register_meta(
-        'post',
-        'bcotodo_gb_metabox',
-        [
-            'type'         => 'string',
-            'single'       => false,
-            'show_in_rest' => true,
-        ] );
+
 }
 add_action( 'init', 'rescue_me_register_meta' );
