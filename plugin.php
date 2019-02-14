@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Rescue Me — Dog Block Plugin
  * Plugin URI: https://github.com/KarenCodes/rescue-me-dog-block/
- * Description: Rescue Me — Dog Block is a Gutenberg plugin created via create-guten-block.
+ * Description: Rescue Me — Dog Block
  * CBG Author: mrahmadawais, maedahbatool
  * CBG Author URI: https://AhmadAwais.com/
  * Author: Karen Neumann, Brezo Cordero
