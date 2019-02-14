@@ -1,7 +1,11 @@
 
 Rescue Me Dog Block
 
+Adds custom post type rescue_me_dogs
 
+Adds meta fields
+
+Creates Rescue Me Dog Block
 
 
 
