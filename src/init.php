@@ -62,11 +62,40 @@ function rescue_me_cgb_editor_assets() { // phpcs:ignore
 
 // Hook: Editor assets.
 add_action( 'enqueue_block_editor_assets', 'rescue_me_cgb_editor_assets' );
+/**
+ * Rescue Me customizations
+ * - custom post type
+ * - custom meta
+ */
 
 /**
- * Custom meta for block
+ * Custom Post Type - rescue_me_dogs
  */
-// register custom meta tag field
+ function rescue_me_custom_post_type_dog()
+  {
+    register_post_type(
+      'rescue_me_dogs',
+      array(
+          'labels'      => array(
+              'name'          => __('Dogs', 'rescue-me'),
+              'singular_name' => __('Dog', 'rescue-me'),
+          ),
+          'menu_position' => 5,
+          'supports' => array('title','editor','thumbnail', 'excerpt','author','custom-fields'),
+          'menu_icon' => 'dashicons-heart',
+          /*'taxonomies' => array('category','post_tag'),*/
+          'public'      => true,
+          'has_archive' => true,
+          'show_in_rest' => true,
+      )
+    );
+  }
+/* add NAMESPACE next round
+add_action('init', __NAMESPACE__ . '\\add_custom_post_type_dog'); */
+add_action('init', 'rescue_me_custom_post_type_dog');
+/**
+ * Custom Meta for block
+*/
 function rescue_me_register_meta() {
     register_meta( 'post', 'rescue_me_meta_good_with_dogs', array(
         'show_in_rest' => true,
@@ -78,6 +107,5 @@ function rescue_me_register_meta() {
         'single' => true,
         'type' => 'boolean',
     ) );
-
 }
 add_action( 'init', 'rescue_me_register_meta' );

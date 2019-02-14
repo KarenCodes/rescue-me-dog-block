@@ -47,7 +47,7 @@ registerBlockType("rescue-me/dog-block", {
 		return (
 			<div className={className}>
 				<CheckboxControl
-					heading={__("Some title?", "rescue-me")}
+					heading={__("Title", "rescue-me")}
 					label={__("Good with Dogs", "rescue-me")}
 					checked={metaDogs}
 					onChange={metaDogs => {
