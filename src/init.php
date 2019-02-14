@@ -112,5 +112,20 @@ function rescue_me_register_meta() {
         'single' => true,
         'type' => 'boolean',
     ) );
+    register_meta( 'post', 'rescue_me_meta_gender', array(
+        'show_in_rest' => true,
+        'single' => true,
+        'type' => 'string',
+    ) );
+    register_meta( 'post', 'rescue_me_meta_size', array(
+        'show_in_rest' => true,
+        'single' => true,
+        'type' => 'string',
+    ) );
+    register_meta( 'post', 'rescue_me_meta_age', array(
+        'show_in_rest' => true,
+        'single' => true,
+        'type' => 'string',
+    ) );
 }
 add_action( 'init', 'rescue_me_register_meta' );

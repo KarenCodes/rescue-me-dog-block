@@ -8,7 +8,7 @@ import "./editor.scss";
 
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
-const { CheckboxControl, ToggleControl } = wp.components;
+const { CheckboxControl, RadioControl } = wp.components;
 //const { withState } = wp.compose;
 
 /**
@@ -39,12 +39,34 @@ registerBlockType("rescue-me/dog-block", {
 			type: "boolean",
 			source: "meta",
 			meta: "rescue_me_meta_good_with_kids"
+		},
+		metaGender: {
+			type: "string",
+			source: "meta",
+			meta: "rescue_me_meta_gender"
+		},
+		metaSize: {
+			type: "string",
+			source: "meta",
+			meta: "rescue_me_meta_size"
+		},
+		metaAge: {
+			type: "string",
+			source: "meta",
+			meta: "rescue_me_meta_age"
 		}
 	},
 
 	edit: props => {
 		const {
-			attributes: { metaDogs, metaCats, metaKids },
+			attributes: {
+				metaDogs,
+				metaCats,
+				metaKids,
+				metaGender,
+				metaSize,
+				metaAge
+			},
 			className,
 			setAttributes
 		} = props;
@@ -72,6 +94,37 @@ registerBlockType("rescue-me/dog-block", {
 					onChange={metaKids => {
 						setAttributes({ metaKids });
 					}}
+				/>
+				<RadioControl
+					label={__("Gender", "rescue-me")}
+					selected={metaGender}
+					options={[
+						{ label: "Female", value: "Female" },
+						{ label: "Male", value: "Male" }
+					]}
+					onChange={metaGender => setAttributes({ metaGender })}
+				/>
+				<RadioControl
+					label={__("Size", "rescue-me")}
+					selected={metaSize}
+					options={[
+						{ label: "Small", value: "Small" },
+						{ label: "Medium", value: "Medium" },
+						{ label: "Large", value: "Large" },
+						{ label: "Extra Large", value: "Extra Large" }
+					]}
+					onChange={metaSize => setAttributes({ metaSize })}
+				/>
+				<RadioControl
+					label={__("Age", "rescue-me")}
+					selected={metaAge}
+					options={[
+						{ label: "Puppy", value: "Puppy" },
+						{ label: "Young", value: "Young" },
+						{ label: "Adult", value: "Adult" },
+						{ label: "Senior", value: "Senior" }
+					]}
+					onChange={metaAge => setAttributes({ metaAge })}
 				/>
 			</div>
 		);
