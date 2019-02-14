@@ -34,12 +34,17 @@ registerBlockType("rescue-me/dog-block", {
 			type: "boolean",
 			source: "meta",
 			meta: "rescue_me_meta_good_with_cats"
+		},
+		metaKids: {
+			type: "boolean",
+			source: "meta",
+			meta: "rescue_me_meta_good_with_kids"
 		}
 	},
 
 	edit: props => {
 		const {
-			attributes: { metaDogs, metaCats },
+			attributes: { metaDogs, metaCats, metaKids },
 			className,
 			setAttributes
 		} = props;
@@ -59,6 +64,13 @@ registerBlockType("rescue-me/dog-block", {
 					checked={metaCats}
 					onChange={metaCats => {
 						setAttributes({ metaCats });
+					}}
+				/>
+				<CheckboxControl
+					label={__("Good with Kids", "rescue-me")}
+					checked={metaKids}
+					onChange={metaKids => {
+						setAttributes({ metaKids });
 					}}
 				/>
 			</div>

@@ -107,5 +107,10 @@ function rescue_me_register_meta() {
         'single' => true,
         'type' => 'boolean',
     ) );
+    register_meta( 'post', 'rescue_me_meta_good_with_kids', array(
+        'show_in_rest' => true,
+        'single' => true,
+        'type' => 'boolean',
+    ) );
 }
 add_action( 'init', 'rescue_me_register_meta' );
