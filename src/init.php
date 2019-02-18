@@ -76,23 +76,68 @@ add_action( 'enqueue_block_editor_assets', 'rescue_me_cgb_editor_assets' );
     register_post_type(
       'rescue_me_dogs',
       array(
-          'labels'      => array(
+
+          'labels'            => array(
               'name'          => __('Dogs', 'rescue-me'),
               'singular_name' => __('Dog', 'rescue-me'),
-          ),
-          'menu_position' => 5,
-          'supports' => array('title','editor','thumbnail', 'excerpt','author','custom-fields'),
-          'menu_icon' => 'dashicons-heart',
+              ),
+
+          'menu_position'     => 5,
+
+          'supports'          => array(
+            'title',
+            'editor',
+            'thumbnail',
+            'excerpt',
+            'author',
+            'custom-fields'
+            ),
+
+          'menu_icon'         => 'dashicons-heart',
           /*'taxonomies' => array('category','post_tag'),*/
-          'public'      => true,
-          'has_archive' => true,
-          'show_in_rest' => true,
+          'public'            => true,
+          'has_archive'       => true,
+          'show_in_rest'      => true,
+          'template_lock'     => 'all',
+
+          'template'          => array(
+
+            array( 'core/paragraph', array(
+                'placeholder' => 'Enter information about this dog.',
+                'className'   => 'rescue-me-about',
+            ) ),
+
+            array( 'core/paragraph', array(
+                'placeholder' => 'Enter contact information for this dog.',
+                'className'   => 'rescue-me-contact',
+            ) ),
+
+            array( 'core-embed/youtube', array(
+                'className'   => 'rescue-me-video',
+            ) ),
+
+            array( 'rescue-me/dog-block', array(
+                'placeholder' => 'Add dog information',
+            ) )
+
+          ),
       )
     );
-  }
+}
 /* add NAMESPACE next round
 add_action('init', __NAMESPACE__ . '\\add_custom_post_type_dog'); */
 add_action('init', 'rescue_me_custom_post_type_dog');
+/*
+* change Add title to Add Dog's Name for this CPT
+*/
+function rescue_me_enter_dog_name( $title ) {
+    $screen = get_current_screen();
+     if  ( 'rescue_me_dogs' == $screen->post_type ) {
+          $title = __('Enter dog\'s name', 'rescue-me' );
+     }
+     return $title;
+}
+add_filter( 'enter_title_here', 'rescue_me_enter_dog_name' );
 /**
  * Custom Meta for block
 */
