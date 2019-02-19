@@ -8,7 +8,7 @@ import "./editor.scss";
 
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
-const { CheckboxControl, RadioControl } = wp.components;
+const { CheckboxControl, RadioControl, TextControl } = wp.components;
 //const { withState } = wp.compose;
 
 /**
@@ -54,6 +54,21 @@ registerBlockType("rescue-me/dog-block", {
 			type: "string",
 			source: "meta",
 			meta: "rescue_me_meta_age"
+		},
+		contactName: {
+			type: "string",
+			source: "html",
+			selector: ".rm-contact-name"
+		},
+		contactEmail: {
+			type: "string",
+			source: "html",
+			selector: ".rm-contact-email"
+		},
+		contactPhone: {
+			type: "string",
+			attribute: "html",
+			selector: ".rm-contact-phone"
 		}
 	},
 
@@ -65,7 +80,10 @@ registerBlockType("rescue-me/dog-block", {
 				metaKids,
 				metaGender,
 				metaSize,
-				metaAge
+				metaAge,
+				contactName,
+				contactEmail,
+				contactPhone
 			},
 			className,
 			setAttributes
@@ -127,16 +145,51 @@ registerBlockType("rescue-me/dog-block", {
 					]}
 					onChange={metaAge => setAttributes({ metaAge })}
 				/>
+				<h4>Dog's contact info</h4>
+				<TextControl
+					className="rm-contact-name"
+					label={__("Contact name", "rescue-me")}
+					value={contactName}
+					onChange={contactName => setAttributes({ contactName })}
+				/>
+				<TextControl
+					className="rm-contact-email"
+					label={__("Contact email", "rescue-me")}
+					value={contactEmail}
+					onChange={contactEmail => setAttributes({ contactEmail })}
+				/>
+				<TextControl
+					className="rm-contact-phone"
+					label={__("Contact phone", "rescue-me")}
+					value={contactPhone}
+					onChange={contactPhone => setAttributes({ contactPhone })}
+				/>
 			</div>
 		);
 	},
+	// save: function(props) {
+	// 	return null;
+	// }
+	save: props => {
+		const {
+			attributes: { contactName, contactEmail, contactPhone }
+		} = props;
+		return (
+			<div className="rm-contact">
+				<p className="rm-contact-name">{contactName}</p>
 
-	save: function(props) {
-		//return (
-		// <div>
-		// 	<p>— Hello from the frontend.</p>
-		// </div>
-		return null;
-		//);
+				<p>
+					<a className="rm-contact-email" href={"mailto:" + contactEmail}>
+						{contactEmail}
+					</a>
+				</p>
+
+				<p>
+					<a className="rm-contact-phone" href={"tel:" + contactPhone}>
+						{contactPhone}
+					</a>
+				</p>
+			</div>
+		);
 	}
 });
