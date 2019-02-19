@@ -107,11 +107,6 @@ add_action( 'enqueue_block_editor_assets', 'rescue_me_cgb_editor_assets' );
                 'className'   => 'rescue-me-about',
             ) ),
 
-            array( 'core/paragraph', array(
-                'placeholder' => 'Enter contact information for this dog.',
-                'className'   => 'rescue-me-contact',
-            ) ),
-
             array( 'core-embed/youtube', array(
                 'className'   => 'rescue-me-video',
             ) ),

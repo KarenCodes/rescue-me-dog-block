@@ -4,14 +4,8 @@
  * CSS for both Backend.
  */
 
-.wp-block-rescue-me-dog-block {
-	background: $gray;
-	border: 0.1rem solid $black;
-	color: $black;
-	margin: 0 auto;
-	max-width: 740px;
-	padding: 2rem;
-}
-.components-base-control .components-base-control__label {
+.wp-block-rescue-me-dog-block
+	.components-base-control
+	.components-base-control__label {
 	font-weight: bold;
 }
