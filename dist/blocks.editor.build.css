@@ -1,15 +1,1 @@
-/**
- * #.# Common SCSS
- *
- * Can include things like variables and mixins
- * that are used across the project.
-*/
-/**
- * #.# Styles
- *
- * CSS for both Backend.
- */
-.wp-block-rescue-me-dog-block
-.components-base-control
-.components-base-control__label {
-  font-weight: bold; }
+.wp-block-rescue-me-dog-block .components-base-control .components-base-control__label{font-weight:bold}

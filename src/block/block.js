@@ -160,29 +160,80 @@ registerBlockType('rescue-me/dog-block', {
 			</div>
 		);
 	},
-	// save: function(props) {
-	// 	return null;
-	// }
+
 	save: props => {
 		const {
 			attributes: { contactName, contactEmail, contactPhone }
 		} = props;
-		return (
-			<div className="rm-contact">
-				<p className="rm-contact-name">{contactName}</p>
+		// only build this if we have some contact info
+		if (contactName || contactEmail || contactPhone) {
+			return (
+				<div className="rm-contact">
+					<p className="rm-contact-name">{contactName}</p>
 
-				<p>
-					<a className="rm-contact-email" href={'mailto:' + contactEmail}>
-						{contactEmail}
-					</a>
-				</p>
+					{contactEmail ? (
+						<p>
+							<a className="rm-contact-email" href={'mailto:' + contactEmail}>
+								{contactEmail}
+							</a>
+						</p>
+					) : null}
 
-				<p>
-					<a className="rm-contact-phone" href={'tel:' + contactPhone}>
-						{contactPhone}
-					</a>
-				</p>
-			</div>
-		);
-	}
+					{contactPhone ? (
+						<p>
+							<a className="rm-contact-phone" href={'tel:' + contactPhone}>
+								{contactPhone}
+							</a>
+						</p>
+					) : null}
+				</div>
+			);
+		} else return null;
+	},
+
+	deprecated: [
+		// old version that did not check for null contact data
+		{
+			attributes: {
+				contactName: {
+					type: 'string',
+					source: 'html',
+					selector: '.rm-contact-name'
+				},
+				contactEmail: {
+					type: 'string',
+					source: 'html',
+					selector: '.rm-contact-email'
+				},
+				contactPhone: {
+					type: 'string',
+					attribute: 'html',
+					selector: '.rm-contact-phone'
+				}
+			},
+
+			save(props) {
+				const {
+					attributes: { contactName, contactEmail, contactPhone }
+				} = props;
+				return (
+					<div className="rm-contact">
+						<p className="rm-contact-name">{contactName}</p>
+
+						<p>
+							<a className="rm-contact-email" href={'mailto:' + contactEmail}>
+								{contactEmail}
+							</a>
+						</p>
+
+						<p>
+							<a className="rm-contact-phone" href={'tel:' + contactPhone}>
+								{contactPhone}
+							</a>
+						</p>
+					</div>
+				);
+			}
+		}
+	]
 });
