@@ -1,15 +1,16 @@
 
 Rescue Me Dog Block
 
-Adds custom post type rescue_me_dogs
-
-Adds meta fields
-
 Creates Rescue Me Dog Block
 
+Custom Post type
+rescue_me_dogs
 
-
-
+Meta Fields
+| Field Name | Value |
+|---------------------------------|:-------:|
+|rescue_me_meta_good_with_dogs    | boolean |
+|rescue_me_meta_good_with_cats    | boolean |
 
 
 
@@ -41,4 +42,3 @@ Below you will find some information on how to run scripts.
 - You don't normally have to `eject` a project because by ejecting you lose the connection with `create-guten-block` and from there onwards you have to update and maintain all the dependencies on your own.
 
 ---
-
