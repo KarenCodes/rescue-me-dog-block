@@ -1,24 +1,30 @@
 
 # Rescue Me Dog Block
 
-Creates Rescue Me Dog Block
+Creates Rescue Me Dog Block for use in the [Rescue Me app](https://github.com/KarenCodes/rescue-me).
 
 ## Custom Post type
 
 rescue_me_dogs
 
-## Meta Fields
+## Meta Fields added to the API
 
 | Field Name | Value |
 |---------------------------------|:-------:|
 |rescue_me_meta_good_with_dogs    | boolean |
 |rescue_me_meta_good_with_cats    | boolean |
+|rescue_me_meta_good_with_kids    | boolean |
+|rescue_me_meta_gender    | boolean |
+|rescue_me_meta_size    | boolean |
+|rescue_me_meta_age    | boolean |
 
-| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
+## Other Block Fields
+
+| Field Name | Value | Converted to |
+|------------|:-------:|:-----:|
+|contactName | string | |
+|contactEmail | string | a href mailto |
+|contactPhone | string | a href tel |
 
 -----
 
