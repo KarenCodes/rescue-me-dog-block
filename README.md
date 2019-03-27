@@ -14,9 +14,9 @@ rescue_me_dogs
 |rescue_me_meta_good_with_dogs    | boolean |
 |rescue_me_meta_good_with_cats    | boolean |
 |rescue_me_meta_good_with_kids    | boolean |
-|rescue_me_meta_gender    | boolean |
-|rescue_me_meta_size    | boolean |
-|rescue_me_meta_age    | boolean |
+|rescue_me_meta_gender    | Male or Female |
+|rescue_me_meta_size    | Small, Medium, Large or Extra Large |
+|rescue_me_meta_age    | Puppy, Young, Adult or Senior |
 
 ## Other Block Fields
 
